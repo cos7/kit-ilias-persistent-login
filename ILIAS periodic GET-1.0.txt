@@ -1,0 +1,45 @@
+// ==UserScript==
+// @name         ILIAS periodic GET
+// @namespace    local
+// @version      1.0
+// @match        https://ilias.studium.kit.edu/*
+// @match        https://klausur.ilias.studium.kit.edu/*
+// @grant        none
+// ==/UserScript==
+
+(() => {
+  const MIN_INTERVAL_MS = 10 * 60 * 1000;
+  const MAX_INTERVAL_MS = 20 * 60 * 1000;
+
+  function nextDelay() {
+    return MIN_INTERVAL_MS +
+      Math.random() * (MAX_INTERVAL_MS - MIN_INTERVAL_MS);
+  }
+
+  async function requestCurrentPage() {
+    try {
+      const response = await fetch(location.href, {
+        method: "GET",
+        credentials: "include",
+        cache: "no-store"
+      });
+
+      console.log(
+        "[periodic request]",
+        new Date().toLocaleTimeString(),
+        response.status
+      );
+    } catch (error) {
+      console.warn("[periodic request failed]", error);
+    }
+  }
+
+  function schedule() {
+    window.setTimeout(async () => {
+      await requestCurrentPage();
+      schedule();
+    }, nextDelay());
+  }
+
+  schedule();
+})();
