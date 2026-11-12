@@ -5,9 +5,7 @@ A small Tampermonkey userscript for KIT ILIAS.
 ## Installation
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/).
-2. Click the link below to install the userscript:
-
-**[Install KIT ILIAS Persistent Login](https://raw.githubusercontent.com/cos7/kit-ilias-persistent-login/main/kit-ilias-persistent-login.user.js)**
+2. Click the link below to install the userscript: **[Install KIT ILIAS Persistent Login](https://raw.githubusercontent.com/cos7/kit-ilias-persistent-login/main/kit-ilias-persistent-login.user.js)**
 
 ## How it works
 
